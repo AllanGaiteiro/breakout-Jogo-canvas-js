@@ -32,12 +32,31 @@
     var ctx
     var menu = []
     var dificuldade
+    var characteres = []
+    var blocos = []
+    var player
+    var playerInfo = { x: 400-75, y: 600-100, width: 150, height: 50, color: 'blue' }
+    var w = 87, s = 83, a = 65, d = 68
+    var cima = 38, baixo = 40, esq = 37, dir = 39
 
     function atualizar() {
-
+        player.Move()
     }
     function render() {
-
+        ctx.save()
+        ctx.clearRect(0, 0, cnv.width, cnv.height)
+        let p = player
+        //alert(c.color)
+        ctx.fillStyle = p.color
+        ctx.fillRect(p.x, p.y, p.width, p.height)
+        for (var i in blocos) {
+            let b = blocos[i]
+            //alert(b.color)
+            //alert(c.color)
+            ctx.fillStyle = b.color
+            ctx.fillRect(b.x, b.y, b.width, b.height)
+        }
+        ctx.restore()
     }
 
     function loop() {
@@ -45,9 +64,81 @@
         render()
         requestAnimationFrame(loop)
     }
+    function loadMove() {
+        ///// centralizar a camera 
+        window.addEventListener('keydown', function () {
+            let tecl = event.keyCode
+            //this.alert(tecl)
+            if (tecl == w || tecl == cima) {
+                player.movCim = true
+            }
+            if (tecl == s || tecl == baixo) {
+                player.movBax = true
+            }
+            if (tecl == a || tecl == esq) {
+                player.movEsq = true
+            }
+            if (tecl == d || tecl == dir) {
+                player.movDir = true
+            }
+        })
+        window.addEventListener('keyup', function () {
+            let tecl = event.keyCode
+            //this.alert(tecl)
+            if (tecl == w || tecl == cima) {
+                player.movCim = false
+            }
+            if (tecl == s || tecl == baixo) {
+                player.movBax = false
+            }
+            if (tecl == a || tecl == esq) {
+                player.movEsq = false
+            }
+            if (tecl == d || tecl == dir) {
+                player.movDir = false
+            }
+        })
+    }
 
-    function loadGame(){
-        
+    function loadBlocos() {
+        var p = playerInfo
+        p.width = 50
+        p.height = 50
+        var wid = cnv.width/p.width
+        var het = (cnv.height/3)/p.height
+        for (var i = 0; i < wid; i++) {
+            p.x = p.width * i
+            for (var j = 0; j < het; j++) {
+
+                
+                p.y = p.height * j
+                p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
+                let char = new Player(p)//new Bola(p)
+                characteres.push(char)
+                blocos.push(char)
+            }
+
+        }
+    }
+    function corAleatoria() {
+        return Math.round(Math.random() * 255)
+    }
+    function loadGame() {
+        //Declaraçao do Player
+        let char = new Player(playerInfo)
+        characteres.push(char)
+        player = char
+        loadMove()
+        loadBlocos()
+        //Declaraçao do bola
+        /*
+        let char = new Bola()
+        characteres.push(char)
+        bola = char
+        */
+
+
+
     }
 
     function inicio() {
