@@ -27,15 +27,15 @@ Characteres.prototype.Draw = function (ctx){
 */
 
 
-
+// jogador 
 var Player = function (c) {
     Characteres.call(this, c)
     this.movCim = this.movBax = this.movDir = this.movEsq = false
 }
 Player.prototype = Object.create(Characteres.prototype)
-Player.prototype.Move = function () {
+Player.prototype.Move = function (cnv) {
 
-    this.movSpeed = 1
+    this.movSpeed = 5
     this.movement
     ////mover-se
     if (this.movCim) {
@@ -50,13 +50,25 @@ Player.prototype.Move = function () {
     if (this.movEsq) {
         this.x += this.movSpeed * -1
     }
+    this.x = Math.max(0, Math.min(cnv.width - this.width, this.x))
+    this.y = Math.max(0, Math.min(cnv.height - this.height, this.y))
+
 
 }
-
+// blocos 
 var Blocos = function (c) {
     Characteres.call(this, c)
     this.visible = true
 
 }
 Blocos.prototype = Object.create(Characteres.prototype)
+
+
+// bola
+var Bola = function (c) {
+    Characteres.call(this, c)
+    this.bola = true
+}
+Bola.prototype = Object.create(Characteres.prototype)
+
 

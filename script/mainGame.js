@@ -35,12 +35,14 @@
     var characteres = []
     var blocos = []
     var player
-    var playerInfo = { x: 400-75, y: 600-100, width: 150, height: 50, color: 'blue' }
+    var bola
+    var info = { x: 400-75, y: 600-100, width: 150, height: 50, color: 'blue' }
     var w = 87, s = 83, a = 65, d = 68
     var cima = 38, baixo = 40, esq = 37, dir = 39
 
     function atualizar() {
-        player.Move()
+        player.Move(cnv)
+        colide(player,blocos)
     }
     function render() {
         ctx.save()
@@ -61,7 +63,7 @@
 
     function loop() {
         atualizar()
-        colide(player,blocos)
+        
         render()
         requestAnimationFrame(loop)
     }
@@ -102,7 +104,7 @@
     }
 
     function loadBlocos() {
-        var p = playerInfo
+        var p = info
         p.width = 50
         p.height = 50
         var wid = cnv.width/p.width
@@ -127,9 +129,14 @@
     }
     function loadGame() {
         //Declaraçao do Player
-        let char = new Player(playerInfo)
-        characteres.push(char)
+        let char = new Player(info)
+        //characteres.push(char)
         player = char
+        //Criaçao bola
+        let bol = new Bola(info)
+        //characteres.push(bol)
+        bola = bol
+
         loadMove()
         loadBlocos()
         //Declaraçao do bola
