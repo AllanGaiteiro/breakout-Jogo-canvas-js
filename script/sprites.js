@@ -7,6 +7,18 @@ var Characteres = function (c) {
     this.height = c.height
     this.color = c.color
 }
+Characteres.prototype.halfHeight = function (){
+    return this.height / 2
+}
+Characteres.prototype.halfWidth = function (){
+    return this.width / 2
+}
+Characteres.prototype.centerX = function (){
+    return this.x + this.halfWidth()
+}
+Characteres.prototype.centerY = function (){
+    return this.y + this.halfHeight()
+}
 /*
 Characteres.prototype.Draw = function (ctx){
     ctx.fillStyle = 'blue'
@@ -40,3 +52,11 @@ Player.prototype.Move = function () {
     }
 
 }
+
+var Blocos = function (c) {
+    Characteres.call(this, c)
+    this.visible = true
+
+}
+Blocos.prototype = Object.create(Characteres.prototype)
+

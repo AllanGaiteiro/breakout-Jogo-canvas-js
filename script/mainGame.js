@@ -61,6 +61,7 @@
 
     function loop() {
         atualizar()
+        colide(player,blocos)
         render()
         requestAnimationFrame(loop)
     }
@@ -113,10 +114,11 @@
                 
                 p.y = p.height * j
                 p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
-                let char = new Player(p)//new Bola(p)
-                characteres.push(char)
+                let char = new Blocos(p)
                 blocos.push(char)
+
             }
+
 
         }
     }
