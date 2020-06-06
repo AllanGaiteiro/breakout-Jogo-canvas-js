@@ -36,37 +36,41 @@
     var blocos = []
     var player
     var bola
-    var info = { x: 400-75, y: 600-100, width: 150, height: 50, color: 'blue' }
-    var w = 87, s = 83, a = 65, d = 68
-    var cima = 38, baixo = 40, esq = 37, dir = 39
+    var info = { x: 400 - 75, y: 600 - 100, width: 150, height: 50, color: 'blue' }
+    var w = 87,
+        s = 83,
+        a = 65,
+        d = 68
+    var cima = 38,
+        baixo = 40,
+        esq = 37,
+        dir = 39
 
     function atualizar() {
         player.Move(cnv)
-        colide(player,blocos)
+        //bola.movebola()
+        colide(player, bola, blocos)
     }
+
     function render() {
         ctx.save()
         ctx.clearRect(0, 0, cnv.width, cnv.height)
-        let p = player
-        //alert(c.color)
-        ctx.fillStyle = p.color
-        ctx.fillRect(p.x, p.y, p.width, p.height)
+        //////player
+        player.draw(ctx)
+        ///// bola 
+        bola.draw(ctx)
         for (var i in blocos) {
-            let b = blocos[i]
-            //alert(b.color)
-            //alert(c.color)
-            ctx.fillStyle = b.color
-            ctx.fillRect(b.x, b.y, b.width, b.height)
+            blocos[i].draw(ctx)
         }
         ctx.restore()
     }
 
     function loop() {
         atualizar()
-        
         render()
         requestAnimationFrame(loop)
     }
+
     function loadMove() {
         ///// centralizar a camera 
         window.addEventListener('keydown', function () {
@@ -107,47 +111,45 @@
         var p = info
         p.width = 50
         p.height = 50
-        var wid = cnv.width/p.width
-        var het = (cnv.height/3)/p.height
+        var wid = cnv.width / p.width
+        var het = (cnv.height / 3) / p.height
         for (var i = 0; i < wid; i++) {
             p.x = p.width * i
             for (var j = 0; j < het; j++) {
-
-                
                 p.y = p.height * j
                 p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
                 let char = new Blocos(p)
                 blocos.push(char)
-
             }
 
 
         }
     }
+    function loadBola() {
+        var p = info
+        p.width = 50
+        p.height = 50
+        p.y = 500
+        p.x = 200
+        p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
+        let char = new Bola(p, dificuldade)
+        bola = char
+    }
+    function loadPlayer() {
+        let char = new Player(info)
+        //characteres.push(char)
+        player = char
+    }
     function corAleatoria() {
         return Math.round(Math.random() * 255)
     }
     function loadGame() {
-        //Declaraçao do Player
-        let char = new Player(info)
-        //characteres.push(char)
-        player = char
-        //Criaçao bola
-        let bol = new Bola(info)
-        //characteres.push(bol)
-        bola = bol
-
+        //Carregar movimentaçao
         loadMove()
+        //Declaraçao e Carregamento Characteres 
+        loadPlayer()
         loadBlocos()
-        //Declaraçao do bola
-        /*
-        let char = new Bola()
-        characteres.push(char)
-        bola = char
-        */
-
-
-
+        loadBola()
     }
 
     function inicio() {
@@ -178,9 +180,10 @@
         menu.Iniciar.addEventListener('click', inicio)
         menu.Opsoes.addEventListener('click', opcoes)
     }
+
     function loadInicial() {
         /// canvas e ctx 
-        cnv = document.querySelector('canvas')
+            cnv = document.querySelector('canvas')
         ctx = cnv.getContext('2d')
         cnv.width = 800
         cnv.height = 600
@@ -225,13 +228,7 @@
         //////////////////////
         menuGame()
     }
-
     window.addEventListener('load', loadInicial)
 }())
 //teste 02: verificar escopo variaveis
-      //alert(test) // variaveis fora nao acessam as de dentro
-
-
-
-
-
+//alert(test) // variaveis fora nao acessam as de dentro

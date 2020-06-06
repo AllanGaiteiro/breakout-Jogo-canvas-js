@@ -1,13 +1,14 @@
 
-function colide(player,blocos) {
+function colide(player,bola,blocos) {
     
     for(var i = 0;i < blocos.length; i++){
         let b = blocos[i] 
         if(b.visible){
-            let difX = player.centerX() - b.centerX()
-            let difY = player.centerY() - b.centerY()
-            let somaWidth = player.halfWidth() + b.halfWidth()
-            let somaHeight = player.halfHeight() + player.halfHeight()
+            let a = player
+            let difX = a.centerX() - b.centerX()
+            let difY = a.centerY() - b.centerY()
+            let somaWidth = a.halfWidth() + b.halfWidth()
+            let somaHeight = a.halfHeight() + a.halfHeight()
             // colizao é quando a posisao do objeto mais metade de sua (largura\tamanho sao iguais ou menos a posiçao do objeto que sera afetado e metade de sua (largura\altura)
 
             //parametro colizao x
@@ -23,17 +24,58 @@ function colide(player,blocos) {
                 if (colidX > colidY) {
                     
                     if (difY > 0) {
-                        player.y += colidY
+                        a.y += colidY
                     } else {
-                        player.y -= colidY
+                        a.y -= colidY
                     }
                 } else {
                     
                     if (difX > 0) {
-                        player.x += colidX
+                        a.x += colidX
 
                     } else {
-                        player.x -= colidX
+                        a.x -= colidX
+
+                    }
+                    
+    
+                }
+            }
+            
+        }
+        if(bola.bola){
+            let b = player
+            let a = bola
+            let difX = a.centerX() - b.centerX()
+            let difY = a.centerY() - b.centerY()
+            let somaWidth = a.halfWidth() + b.halfWidth()
+            let somaHeight = a.halfHeight() + a.halfHeight()
+            // colizao é quando a posisao do objeto mais metade de sua (largura\tamanho sao iguais ou menos a posiçao do objeto que sera afetado e metade de sua (largura\altura)
+
+            //parametro colizao x
+            let colizaoX = Math.abs(difX) <  somaWidth ? true : false
+            //parametro colizao y 
+            let colizaoY = Math.abs(difY) < somaHeight ? true : false
+
+            if(colizaoX && colizaoY){
+                let colidX = somaWidth - Math.abs(difX)
+                let colidY = somaHeight - Math.abs(difY)
+                /// texte dano
+                
+                if (colidX > colidY) {
+                    
+                    if (difY > 0) {
+                        a.y += colidY
+                    } else {
+                        a.y -= colidY
+                    }
+                } else {
+                    
+                    if (difX > 0) {
+                        a.x += colidX
+
+                    } else {
+                        a.x -= colidX
 
                     }
                     

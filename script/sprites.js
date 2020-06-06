@@ -7,6 +7,11 @@ var Characteres = function (c) {
     this.height = c.height
     this.color = c.color
 }
+Characteres.prototype.draw = function (ctx){
+            //alert(c.color)
+    ctx.fillStyle = this.color
+    ctx.fillRect(this.x, this.y, this.width, this.height)
+}
 Characteres.prototype.halfHeight = function (){
     return this.height / 2
 }
@@ -19,12 +24,6 @@ Characteres.prototype.centerX = function (){
 Characteres.prototype.centerY = function (){
     return this.y + this.halfHeight()
 }
-/*
-Characteres.prototype.Draw = function (ctx){
-    ctx.fillStyle = 'blue'
-    ctx.fillRect(0,0,this.width,this.height)
-}
-*/
 
 
 // jogador 
@@ -33,6 +32,7 @@ var Player = function (c) {
     this.movCim = this.movBax = this.movDir = this.movEsq = false
 }
 Player.prototype = Object.create(Characteres.prototype)
+
 Player.prototype.Move = function (cnv) {
 
     this.movSpeed = 5
@@ -62,13 +62,20 @@ var Blocos = function (c) {
 
 }
 Blocos.prototype = Object.create(Characteres.prototype)
-
-
 // bola
-var Bola = function (c) {
+var Bola = function (c,dificuldade) {
     Characteres.call(this, c)
     this.bola = true
+    this.gravit = 3 * dificuldade
+    this.y += this.gravit
+    //alert('texte')
+
 }
 Bola.prototype = Object.create(Characteres.prototype)
-
-
+Bola.prototype.movebola = function (){
+    this.dx = this.gravit
+    this.dy = this.gravit
+    this.x += this.dx
+    this.y += this.dy
+    /*this.dx = this.x <= 0 ||  this.x >= cnv.width ? this.dx *= -1 : this.dx*= 1*/
+}
