@@ -36,7 +36,7 @@
     var blocos = []
     var player
     var bola
-    var info = { x: 400 - 75, y: 600 - 100, width: 150, height: 50, color: 'blue' }
+    var info = { x: 400 - 75, y: 600 - 75, width: 150, height: 50, color: 'blue' }
     var w = 87,
         s = 83,
         a = 65,
@@ -51,7 +51,18 @@
         bola.movebola(cnv)
         colide(player, bola, blocos)
     }
-
+    function score() {
+        
+        //alert(this.contador)
+        ctx.font = "2rem serif"
+        if (bola.contador < 10 ) {
+            value = `SCORE: 0${bola.contador}`
+        }else{
+            value = `SCORE: ${bola.contador}`
+        }
+        ctx.fillStyle = 'blue'
+        ctx.fillText(`${value}`, cnv.width - 150, 35)
+    }
     function render() {
         ctx.save()
         ctx.clearRect(0, 0, cnv.width, cnv.height)
@@ -62,7 +73,9 @@
         for (var i in blocos) {
             blocos[i].draw(ctx)
         }
+        
         ctx.restore()
+        score()
     }
     ////////////// fim do loop //////////////////////
 
@@ -133,7 +146,7 @@
         p.y = 250
         p.x = 300
         p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
-        let char = new Bola(p,dificuldade)
+        let char = new Bola(p, dificuldade)
         bola = char
     }
     function loadPlayer() {
@@ -144,6 +157,7 @@
     function corAleatoria() {
         return Math.round(Math.random() * 255)
     }
+
     ////////////// Fima Carregamento Jogo ////////////////////
     function loadGame() {
         //Carregar movimentaçao

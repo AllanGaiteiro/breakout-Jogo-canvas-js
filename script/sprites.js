@@ -8,11 +8,11 @@ var Characteres = function (c) {
 }
 Characteres.prototype.draw = function (ctx) {
     //alert(c.color)
-    if(this.visible){
+    if (this.visible) {
         ctx.fillStyle = this.color
-    ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.fillRect(this.x, this.y, this.width, this.height)
     }
-    
+
 }
 Characteres.prototype.halfHeight = function () {
     return this.height / 2
@@ -29,7 +29,7 @@ Characteres.prototype.centerY = function () {
 // jogador 
 var Player = function (c) {
     Characteres.call(this, c)
-    this.visible = true 
+    this.visible = true
     this.movCim = this.movBax = this.movDir = this.movEsq = false
 }
 Player.prototype = Object.create(Characteres.prototype)
@@ -60,14 +60,15 @@ Player.prototype.move = function (cnv) {
 var Blocos = function (c) {
     Characteres.call(this, c)
     this.visible = true
-
 }
 Blocos.prototype = Object.create(Characteres.prototype)
+
 // bola
 var Bola = function (c, d) {
     Characteres.call(this, c)
     this.bola = true
     this.visible = true
+    this.contador = 0
     //alert('texte')
     this.gravit = 4 * d
     this.dx = this.gravit
@@ -75,12 +76,15 @@ var Bola = function (c, d) {
 }
 Bola.prototype = Object.create(Characteres.prototype)
 Bola.prototype.movebola = function (cnv) {
-    
+
     this.dx = this.x <= 0 || this.x >= cnv.width - this.width ? this.dx *= -1 : this.dx *= 1
 
     this.dy = this.y <= 0 || this.y >= cnv.height - this.height ? this.dy *= -1 : this.dy *= 1
-    
+
     this.x += this.dx
     this.y += this.dy
 
+}
+Bola.prototype.count = function () {
+    this.contador++
 }
