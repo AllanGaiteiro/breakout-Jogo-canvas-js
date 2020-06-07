@@ -31,8 +31,8 @@
     var cnv
     var ctx
     var menu = []
-    var dificuldade
-    var characteres = []
+    var dificuldade = 1
+    //var characteres = []
     var blocos = []
     var player
     var bola
@@ -45,10 +45,10 @@
         baixo = 40,
         esq = 37,
         dir = 39
-
+    ////////////// fim do loop //////////////////////
     function atualizar() {
-        player.Move(cnv)
-        //bola.movebola()
+        player.move(cnv)
+        bola.movebola(cnv)
         colide(player, bola, blocos)
     }
 
@@ -64,25 +64,26 @@
         }
         ctx.restore()
     }
+    ////////////// fim do loop //////////////////////
 
+    ////////////// Carregamento Jogo ////////////////////
     function loop() {
         atualizar()
         render()
         requestAnimationFrame(loop)
     }
-
     function loadMove() {
         ///// centralizar a camera 
         window.addEventListener('keydown', function () {
             let tecl = event.keyCode
             //this.alert(tecl)
-            if (tecl == w || tecl == cima) {
+            /*if (tecl == w || tecl == cima) {
                 player.movCim = true
             }
             if (tecl == s || tecl == baixo) {
                 player.movBax = true
             }
-            if (tecl == a || tecl == esq) {
+            */if (tecl == a || tecl == esq) {
                 player.movEsq = true
             }
             if (tecl == d || tecl == dir) {
@@ -92,13 +93,13 @@
         window.addEventListener('keyup', function () {
             let tecl = event.keyCode
             //this.alert(tecl)
-            if (tecl == w || tecl == cima) {
+            /*if (tecl == w || tecl == cima) {
                 player.movCim = false
             }
             if (tecl == s || tecl == baixo) {
                 player.movBax = false
             }
-            if (tecl == a || tecl == esq) {
+            */if (tecl == a || tecl == esq) {
                 player.movEsq = false
             }
             if (tecl == d || tecl == dir) {
@@ -126,13 +127,13 @@
         }
     }
     function loadBola() {
-        var p = info
+        let p = info
         p.width = 50
         p.height = 50
-        p.y = 500
-        p.x = 200
+        p.y = 250
+        p.x = 300
         p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
-        let char = new Bola(p, dificuldade)
+        let char = new Bola(p,dificuldade)
         bola = char
     }
     function loadPlayer() {
@@ -143,6 +144,7 @@
     function corAleatoria() {
         return Math.round(Math.random() * 255)
     }
+    ////////////// Fima Carregamento Jogo ////////////////////
     function loadGame() {
         //Carregar movimentaçao
         loadMove()
@@ -151,12 +153,13 @@
         loadBlocos()
         loadBola()
     }
-
     function inicio() {
         loadGame()
         loop()
     }
-
+    function dificult(n) {
+        dificuldade = n
+    }
     function opcoes() {
         menu.Game.style.display = 'none'
         menu.opsMenu.style.display = 'block'
@@ -164,18 +167,10 @@
             menu.Game.style.display = 'block'
             menu.opsMenu.style.display = 'none'
         })
-        menu.Opsoes.Facil.addEventListener('click', function () {
-            dificuldade = 1
-        })
-        menu.Opsoes.Medio.addEventListener('click', function () {
-            dificuldade = 2
-        })
-        menu.Opsoes.Dificil.addEventListener('click', function () {
-            dificuldade = 3
-        })
-
+        menu.Opsoes.Facil.addEventListener('click', dificult(1))
+        menu.Opsoes.Medio.addEventListener('click', dificult(2))
+        menu.Opsoes.Dificil.addEventListener('click', dificult(3))
     }
-
     function menuGame() {
         menu.Iniciar.addEventListener('click', inicio)
         menu.Opsoes.addEventListener('click', opcoes)
@@ -183,7 +178,7 @@
 
     function loadInicial() {
         /// canvas e ctx 
-            cnv = document.querySelector('canvas')
+        cnv = document.querySelector('canvas')
         ctx = cnv.getContext('2d')
         cnv.width = 800
         cnv.height = 600
