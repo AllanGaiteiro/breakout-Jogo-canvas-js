@@ -63,7 +63,7 @@ function colidBlock(bola, blocos) {
                 } else {
                     a.dx *= -1
                 }
-                b.visible = falsed
+                b.visible = false
             }
 
         }
