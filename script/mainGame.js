@@ -24,7 +24,6 @@
     //window.addEventListener('load', teste03)
     //////////////////////////////
 
-
     ///// Começo Codigo ////
 
     ///declaraçao
@@ -36,13 +35,13 @@
     var blocos = []
     var player
     var bola
-    var info = { x: 400 - 75, y: 600 - 75, width: 150, height: 50, color: 'blue' }
-    var w = 87,
-        s = 83,
+    var info = { x: 0, y: 0, width: 0, height: 0, color: ' ' }
+    var //w = 87,
+        //s = 83,
         a = 65,
         d = 68
-    var cima = 38,
-        baixo = 40,
+    var //cima = 38,
+        //baixo = 40,
         esq = 37,
         dir = 39
     ////////////// fim do loop //////////////////////
@@ -52,7 +51,6 @@
         colide(player, bola, blocos)
     }
     function score() {
-
         //alert(this.contador)
         ctx.font = "2rem serif"
         if (bola.contador < 10) {
@@ -73,7 +71,6 @@
         for (var i in blocos) {
             blocos[i].draw(ctx)
         }
-
         ctx.restore()
         score()
     }
@@ -84,10 +81,10 @@
         if (bola.contador == 64) {
             alert('Você Venceu!!!')
             loadInicial()
-        } else if(bola.y > cnv.height){
+        } else if (bola.y > cnv.height) {
             alert('Você Perdeu!!!')
             loadInicial()
-        }else{
+        } else {
             atualizar()
             render()
             requestAnimationFrame(loop)
@@ -157,6 +154,12 @@
         bola = char
     }
     function loadPlayer() {
+        let p = info
+        p.x = 400 - 75
+        p.y = 600 - 75
+        p.width = 150
+        p.height = 50
+        p.color = 'blue'
         let char = new Player(info)
         //characteres.push(char)
         player = char
@@ -164,7 +167,6 @@
     function corAleatoria() {
         return Math.round(Math.random() * 255)
     }
-
     ////////////// Fima Carregamento Jogo ////////////////////
     function loadGame() {
         //Carregar movimentaçao
@@ -224,9 +226,6 @@
         menu.Opsoes.Facil = document.getElementById(opsDifMenuId + 'Facil')
         menu.Opsoes.Medio = document.getElementById(opsDifMenuId + 'Medio')
         menu.Opsoes.Dificil = document.getElementById(opsDifMenuId + 'Dificil')
-
-
-
 
         //teste 04: verificaçao do ctx
 
