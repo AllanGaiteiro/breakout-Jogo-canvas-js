@@ -1,10 +1,10 @@
 
 
 function colide(player, bola, blocos) {
-    colidPlayer( bola, player)
+    colidPlayer(bola, player)
     colidBlock(bola, blocos)
 }
-function colidPlayer( bola, player) {
+function colidPlayer(bola, player) {
     let a = bola
     let b = player
     let difX = a.centerX() - b.centerX()
@@ -29,7 +29,7 @@ function colidPlayer( bola, player) {
         } else {
             a.dx *= -1
         }
-        
+
     }
 }
 
@@ -56,16 +56,12 @@ function colidBlock(bola, blocos) {
                 let colidX = somaWidth - Math.abs(difX)
                 let colidY = somaHeight - Math.abs(difY)
                 /// texte dano
+                a.dx *= -1
+                a.dy *= -1
 
-                if (colidX > colidY) {
-                    a.dy *= -1
-
-                } else {
-                    a.dx *= -1
-                }
                 b.visible = false
                 a.count()
-                
+
             }
 
         }
