@@ -79,7 +79,7 @@ Bola.prototype.movebola = function (cnv) {
 
     this.dx = this.x <= 0 || this.x >= cnv.width - this.width ? this.dx *= -1 : this.dx *= 1
 
-    this.dy = this.y <= 0 || this.y >= cnv.height - this.height ? this.dy *= -1 : this.dy *= 1
+    this.dy = this.y <= 0 ? this.dy *= -1 : this.dy *= 1
 
     this.x += this.dx
     this.y += this.dy

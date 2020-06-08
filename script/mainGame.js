@@ -52,12 +52,12 @@
         colide(player, bola, blocos)
     }
     function score() {
-        
+
         //alert(this.contador)
         ctx.font = "2rem serif"
-        if (bola.contador < 10 ) {
+        if (bola.contador < 10) {
             value = `SCORE: 0${bola.contador}`
-        }else{
+        } else {
             value = `SCORE: ${bola.contador}`
         }
         ctx.fillStyle = 'blue'
@@ -73,7 +73,7 @@
         for (var i in blocos) {
             blocos[i].draw(ctx)
         }
-        
+
         ctx.restore()
         score()
     }
@@ -81,9 +81,17 @@
 
     ////////////// Carregamento Jogo ////////////////////
     function loop() {
-        atualizar()
-        render()
-        requestAnimationFrame(loop)
+        if (bola.contador == 64) {
+            alert('Você Venceu!!!')
+            loadInicial()
+        } else if(bola.y > cnv.height){
+            alert('Você Perdeu!!!')
+            loadInicial()
+        }else{
+            atualizar()
+            render()
+            requestAnimationFrame(loop)
+        }
     }
     function loadMove() {
         ///// centralizar a camera 
@@ -120,7 +128,6 @@
             }
         })
     }
-
     function loadBlocos() {
         var p = info
         p.width = 50
@@ -177,6 +184,7 @@
     function opcoes() {
         menu.Game.style.display = 'none'
         menu.opsMenu.style.display = 'block'
+
         menu.Opsoes.Volta.addEventListener('click', function () {
             menu.Game.style.display = 'block'
             menu.opsMenu.style.display = 'none'
