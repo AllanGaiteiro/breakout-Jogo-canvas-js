@@ -8,10 +8,16 @@ var Characteres = function (c) {
 }
 Characteres.prototype.draw = function (ctx) {
     //alert(c.color)
-    if (this.visible) {
+    if (this.visible && ) {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
+    /*if(this.bola){
+        var img = new Image()
+        img.src = '../images/bola.png'
+        //alert(img)
+        ctx.drawImage(img,40,40)
+    }*/
 
 }
 Characteres.prototype.halfHeight = function () {
@@ -59,6 +65,7 @@ Player.prototype.move = function (cnv) {
 // blocos 
 var Blocos = function (c) {
     Characteres.call(this, c)
+    this.visibleCount = 0
     this.visible = true
 }
 Blocos.prototype = Object.create(Characteres.prototype)

@@ -23,6 +23,7 @@ function colidPlayer(bola, player) {
         let colidY = somaHeight - Math.abs(difY)
         /// texte dano
 
+
         if (colidX > colidY) {
             a.dy *= -1
 
@@ -56,14 +57,18 @@ function colidBlock(bola, blocos) {
                 let colidX = somaWidth - Math.abs(difX)
                 let colidY = somaHeight - Math.abs(difY)
                 /// texte dano
-                a.dx *= -1
-                a.dy *= -1
+                if (colidX > colidY) {
+                    a.dy *= -1
+        
+                } else {
+                    a.dx *= -1
+                }
 
-                b.visible = false
+                b.visibleCount++
+                b.visible = b.visibleCount == 2 ? false : true
                 a.count()
 
             }
-
         }
 
 

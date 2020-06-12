@@ -1,3 +1,3 @@
-function playerInfo(){
+function playerInfo() {
     return 'teste'
 }
