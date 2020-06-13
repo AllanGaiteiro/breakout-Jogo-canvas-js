@@ -15,24 +15,24 @@
   text-align: center;
 }
 
-.container menu {
+.container main menu {
   position: var(--absol);
   top: 120px;
   left: calc(calc(var(--widthCont) - var(--widthMenu))/2);
   margin: auto;
   width: 400px;
-  background-color: dimgray;
+  background-color: rgba(95, 87, 87, 0.233);
   padding: 0px;
   padding-bottom: 50px;
   border-radius: 5px;
 }
 
-.container menu h2 {
+.container main menu h2 {
   text-align: center;
   font-size: 4rem;
 }
 
-.container menu button {
+.container main menu button {
   width: 240px;
   height: 80px;
   margin: auto;
@@ -40,23 +40,42 @@
   font-size: 2rem;
 }
 
-.container #menuGame #menuGame_Iniciar {
-  -webkit-animation: mudar 10s linear;
-          animation: mudar 10s linear;
+.container main .comeco_Game {
+  position: relative;
+  width: 800px;
+  height: 100px;
+  vertical-align: middle;
+  margin: 0px;
+  padding: 0px;
+  margin-left: -200px;
+  margin-bottom: 120px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /*menu.Iniciar.style.width = '100px'
+        menu.Iniciar.style.height = '40px'*/
 }
 
-.container #opsMenu #voltar {
+.container main .comeco_Game h2 {
+  display: none;
+}
+
+.container main .comeco_Game button {
+  margin: auto;
+}
+
+.container main .opsMenu #voltar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.container #opsMenu #voltar h2 {
+.container main .opsMenu #voltar h2 {
   margin: 10px;
   font-size: 2rem;
 }
 
-.container #opsMenu #voltar #opsDif_Volta {
+.container main .opsMenu #voltar #opsDif_Volta {
   margin-left: 10px;
   margin-right: 0px;
   width: 120px;
@@ -64,31 +83,40 @@
   font-size: 1.5rem;
 }
 
-.container #opsMenu h3 {
+.container main .opsMenu h3 {
   text-align: center;
   font-size: 2rem;
 }
 
-.container #opsMenu button {
+.container main .opsMenu button {
   border: none;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-.container #opsMenu #opsDif_Facil:hover {
+.container main .opsMenu #opsDif_Facil:hover {
   background-color: chartreuse;
 }
 
-.container #opsMenu #opsDif_Medio:hover {
+.container main .opsMenu #opsDif_Medio:hover {
   background-color: yellow;
 }
 
-.container #opsMenu #opsDif_Dificil:hover {
+.container main .opsMenu #opsDif_Dificil:hover {
   background-color: red;
 }
 
-.container canvas {
-  margin-left: 50px;
+.container main canvas {
+  width: 900px;
+  height: 750px;
   background-color: rgba(104, 101, 101, 0.774);
+}
+
+.container footer {
+  text-align: center;
+}
+
+.container footer p {
+  font-size: 1.5rem;
 }
 /*# sourceMappingURL=index.css.map */

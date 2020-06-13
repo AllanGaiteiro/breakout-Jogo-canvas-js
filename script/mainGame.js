@@ -59,7 +59,7 @@
             value = `SCORE: ${bola.contador}`
         }
         ctx.fillStyle = 'blue'
-        ctx.fillText(`${value}`, cnv.width - 150, 35)
+        ctx.fillText(`${value}`, cnv.width - 200, 700)
     }
     function render() {
         ctx.save()
@@ -156,7 +156,7 @@
     function loadPlayer() {
         let p = info
         p.x = 400 - 75
-        p.y = 600 - 75
+        p.y = 700 - 75
         p.width = 150
         p.height = 50
         p.color = 'blue'
@@ -176,12 +176,16 @@
         loadBlocos()
         loadBola()
     }
+    function comecar(){
+        document.getElementById('menuGame').className = 'comeco_Game'
+        document.getElementById('opsMenu').className = 'comeco_Game'
+        //removeEventListener('click', opcoes)
+        
+    }
     function inicio() {
+        comecar()
         loadGame()
         loop()
-    }
-    function dificult(n) {
-        dificuldade = n
     }
     function opcoes() {
         menu.Game.style.display = 'none'
@@ -191,21 +195,28 @@
             menu.Game.style.display = 'block'
             menu.opsMenu.style.display = 'none'
         })
-        menu.Opsoes.Facil.addEventListener('click', dificult(1))
-        menu.Opsoes.Medio.addEventListener('click', dificult(2))
-        menu.Opsoes.Dificil.addEventListener('click', dificult(3))
+        menu.Opsoes.Facil.addEventListener('click', function (){
+            dificuldade = 1
+        })
+        menu.Opsoes.Medio.addEventListener('click', function (){
+            dificuldade = 1.5
+        })
+        menu.Opsoes.Dificil.addEventListener('click', function ( ){
+            dificuldade = 2
+        })
     }
     function menuGame() {
         menu.Iniciar.addEventListener('click', inicio)
         menu.Opsoes.addEventListener('click', opcoes)
+
     }
 
     function loadInicial() {
         /// canvas e ctx 
         cnv = document.querySelector('canvas')
         ctx = cnv.getContext('2d')
-        cnv.width = 800
-        cnv.height = 600
+        cnv.width = 900
+        cnv.height = 750
         //////////////////////////
 
         //menu

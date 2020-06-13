@@ -78,7 +78,8 @@ var Bola = function (c, d) {
     this.visible = true
     this.contador = 0
     //alert('texte')
-    this.gravit = 4 * d
+    this.gravit = 3 * d
+    //alert(d)
     this.dx = this.gravit
     this.dy = this.gravit
 }

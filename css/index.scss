@@ -2,7 +2,7 @@
     --widthCont: 900px;
     --widthCnv : 800px;
     --widthMenu: 400px;
-    --absol: absolute;
+    --absol    : absolute;
 }
 
 
@@ -15,75 +15,114 @@
         text-align: center;
     }
 
-    menu {
-        position        : var(--absol);
-        top             : 120px;
-        left            : calc(calc(var(--widthCont) - var(--widthMenu))/2);
-        margin          : auto;
-        width           : 400px;
-        background-color: dimgray;
-        padding         : 0px;
-        padding-bottom  : 50px;
-        border-radius   : 5px;
+    main {
+        menu {
+            position        : var(--absol);
+            top             : 120px;
+            left            : calc(calc(var(--widthCont) - var(--widthMenu))/2);
+            margin          : auto;
+            width           : 400px;
+            background-color: rgba(95, 87, 87, 0.233);
+            padding         : 0px;
+            padding-bottom  : 50px;
+            border-radius   : 5px;
 
-        h2 {
-            text-align: center;
-            font-size : 4rem;
-        }
-
-        button {
-            width    : 240px;
-            height   : 80px;
-            margin   : auto;
-            display  : block;
-            font-size: 2rem;
-        }
-    }
-
-    #menuGame{
-        #menuGame_Iniciar{
-            animation: mudar 10s linear;
-        }
-        
-    }
-    #opsMenu {
-        #voltar {
-            display: flex;
             h2 {
-                margin: 10px;
+                text-align: center;
+                font-size : 4rem;
+            }
+
+            button {
+                width    : 240px;
+                height   : 80px;
+                margin   : auto;
+                display  : block;
                 font-size: 2rem;
             }
+        }
 
-            #opsDif_Volta {
-                margin-left: 10px;
-                margin-right: 0px;
-                width: 120px;
-                height: 40px;
-                font-size: 1.5rem;
+        .comeco_Game {
+            position      : relative;
+            width         : 800px;
+            height        : 100px;
+            vertical-align: middle;
+            margin        : 0px;
+            padding       : 0px;
+            margin-left   : -200px;
+            margin-bottom : 120px;
+            display       : flex;
+
+            h2 {
+                display: none;
             }
-        }
-        h3{
-            text-align: center;
-            font-size: 2rem;
-        }
-        button{
-            border: none;
-            transition: all 0.5s;
-        }
-        #opsDif_Facil:hover{
-            background-color: chartreuse;
-        }
-        #opsDif_Medio:hover{
-            background-color: yellow;
-        }
-        #opsDif_Dificil:hover{
-            background-color: red;
+
+            button {
+                margin: auto;
+            }
+
+            /*menu.Iniciar.style.width = '100px'
+        menu.Iniciar.style.height = '40px'*/
+
+
         }
 
+        .opsMenu {
+            #voltar {
+                display: flex;
+
+                h2 {
+                    margin   : 10px;
+                    font-size: 2rem;
+                }
+
+                #opsDif_Volta {
+                    margin-left : 10px;
+                    margin-right: 0px;
+                    width       : 120px;
+                    height      : 40px;
+                    font-size   : 1.5rem;
+                }
+            }
+
+            h3 {
+                text-align: center;
+                font-size : 2rem;
+            }
+
+            button {
+                border    : none;
+                transition: all 0.5s;
+            }
+
+            #opsDif_Facil:hover {
+                background-color: chartreuse;
+            }
+
+            #opsDif_Medio:hover {
+                background-color: yellow;
+            }
+
+            #opsDif_Dificil:hover {
+                background-color: red;
+            }
+
+        }
+
+        canvas {
+            width: 900px;
+            height: 750px;
+            background-color: rgba(104, 101, 101, 0.774);
+        }
+    }
+    footer{
+        text-align: center;
+        
+        p{
+            font-size:1.5rem;
+        }
     }
 
-    canvas {
-        margin-left     : 50px;
-        background-color: rgba(104, 101, 101, 0.774);
-    }
+
+
+
 }
