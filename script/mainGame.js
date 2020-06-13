@@ -145,8 +145,8 @@
     }
     function loadBola() {
         let p = info
-        p.width = 40
-        p.height = 40
+        p.width = 20
+        p.height = 20
         p.y = 250
         p.x = 300
         p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`

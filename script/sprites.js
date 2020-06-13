@@ -8,16 +8,17 @@ var Characteres = function (c) {
 }
 Characteres.prototype.draw = function (ctx) {
     //alert(c.color)
-    if (this.visible && ) {
+    if (this.visible && !this.bola) {
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-    /*if(this.bola){
-        var img = new Image()
-        img.src = '../images/bola.png'
+    }else if(this.bola){
         //alert(img)
-        ctx.drawImage(img,40,40)
-    }*/
+        ctx.beginPath()
+        ctx.fillStyle = this.color
+        ctx.arc(this.x,this.y,this.width,0,2*Math.PI,true)
+        ctx.fill()
+        ctx.stroke()
+    }
 
 }
 Characteres.prototype.halfHeight = function () {
@@ -84,9 +85,9 @@ var Bola = function (c, d) {
 Bola.prototype = Object.create(Characteres.prototype)
 Bola.prototype.movebola = function (cnv) {
 
-    this.dx = this.x <= 0 || this.x >= cnv.width - this.width ? this.dx *= -1 : this.dx *= 1
+    this.dx = this.x <= this.width || this.x >= cnv.width - this.width ? this.dx *= -1 : this.dx *= 1
 
-    this.dy = this.y <= 0 ? this.dy *= -1 : this.dy *= 1
+    this.dy = this.y <= this.height ? this.dy *= -1 : this.dy *= 1
 
     this.x += this.dx
     this.y += this.dy
