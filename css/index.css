@@ -1,3 +1,94 @@
-canvas {
-    background-color: rgba(104, 101, 101, 0.774);
+:root {
+  --widthCont: 900px;
+  --widthCnv: 800px;
+  --widthMenu: 400px;
+  --absol: absolute;
 }
+
+.container {
+  position: relative;
+  margin: auto;
+  width: var(--widthCont);
+}
+
+.container header {
+  text-align: center;
+}
+
+.container menu {
+  position: var(--absol);
+  top: 120px;
+  left: calc(calc(var(--widthCont) - var(--widthMenu))/2);
+  margin: auto;
+  width: 400px;
+  background-color: dimgray;
+  padding: 0px;
+  padding-bottom: 50px;
+  border-radius: 5px;
+}
+
+.container menu h2 {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.container menu button {
+  width: 240px;
+  height: 80px;
+  margin: auto;
+  display: block;
+  font-size: 2rem;
+}
+
+.container #menuGame #menuGame_Iniciar {
+  -webkit-animation: mudar 10s linear;
+          animation: mudar 10s linear;
+}
+
+.container #opsMenu #voltar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container #opsMenu #voltar h2 {
+  margin: 10px;
+  font-size: 2rem;
+}
+
+.container #opsMenu #voltar #opsDif_Volta {
+  margin-left: 10px;
+  margin-right: 0px;
+  width: 120px;
+  height: 40px;
+  font-size: 1.5rem;
+}
+
+.container #opsMenu h3 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.container #opsMenu button {
+  border: none;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.container #opsMenu #opsDif_Facil:hover {
+  background-color: chartreuse;
+}
+
+.container #opsMenu #opsDif_Medio:hover {
+  background-color: yellow;
+}
+
+.container #opsMenu #opsDif_Dificil:hover {
+  background-color: red;
+}
+
+.container canvas {
+  margin-left: 50px;
+  background-color: rgba(104, 101, 101, 0.774);
+}
+/*# sourceMappingURL=index.css.map */

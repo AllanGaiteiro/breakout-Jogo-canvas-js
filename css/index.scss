@@ -1,0 +1,89 @@
+:root {
+    --widthCont: 900px;
+    --widthCnv : 800px;
+    --widthMenu: 400px;
+    --absol: absolute;
+}
+
+
+.container {
+    position: relative;
+    margin  : auto;
+    width   : var(--widthCont);
+
+    header {
+        text-align: center;
+    }
+
+    menu {
+        position        : var(--absol);
+        top             : 120px;
+        left            : calc(calc(var(--widthCont) - var(--widthMenu))/2);
+        margin          : auto;
+        width           : 400px;
+        background-color: dimgray;
+        padding         : 0px;
+        padding-bottom  : 50px;
+        border-radius   : 5px;
+
+        h2 {
+            text-align: center;
+            font-size : 4rem;
+        }
+
+        button {
+            width    : 240px;
+            height   : 80px;
+            margin   : auto;
+            display  : block;
+            font-size: 2rem;
+        }
+    }
+
+    #menuGame{
+        #menuGame_Iniciar{
+            animation: mudar 10s linear;
+        }
+        
+    }
+    #opsMenu {
+        #voltar {
+            display: flex;
+            h2 {
+                margin: 10px;
+                font-size: 2rem;
+            }
+
+            #opsDif_Volta {
+                margin-left: 10px;
+                margin-right: 0px;
+                width: 120px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+        h3{
+            text-align: center;
+            font-size: 2rem;
+        }
+        button{
+            border: none;
+            transition: all 0.5s;
+        }
+        #opsDif_Facil:hover{
+            background-color: chartreuse;
+        }
+        #opsDif_Medio:hover{
+            background-color: yellow;
+        }
+        #opsDif_Dificil:hover{
+            background-color: red;
+        }
+
+    }
+
+    canvas {
+        margin-left     : 50px;
+        background-color: rgba(104, 101, 101, 0.774);
+    }
+}
