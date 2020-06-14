@@ -81,7 +81,7 @@ var Bola = function (c, d) {
     this.gravit = 3 * d
     //alert(d)
     this.dx = this.gravit
-    this.dy = this.gravit
+    this.dy = -this.gravit
 }
 Bola.prototype = Object.create(Characteres.prototype)
 Bola.prototype.movebola = function (cnv) {

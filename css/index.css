@@ -17,7 +17,7 @@
 
 .container main menu {
   position: var(--absol);
-  top: 120px;
+  top: 200px;
   left: calc(calc(var(--widthCont) - var(--widthMenu))/2);
   margin: auto;
   width: 400px;
@@ -42,13 +42,13 @@
 
 .container main .comeco_Game {
   position: relative;
-  width: 800px;
+  width: 900px;
   height: 100px;
   vertical-align: middle;
   margin: 0px;
   padding: 0px;
-  margin-left: -200px;
-  margin-bottom: 120px;
+  margin-left: -250px;
+  margin-bottom: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

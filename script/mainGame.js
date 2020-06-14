@@ -35,6 +35,9 @@
     var blocos = []
     var player
     var bola
+    var qtdBloco
+    var saindo
+    var pause = false
     var info = { x: 0, y: 0, width: 0, height: 0, color: ' ' }
     var //w = 87,
         //s = 83,
@@ -78,16 +81,23 @@
 
     ////////////// Carregamento Jogo ////////////////////
     function loop() {
-        if (bola.contador == 64) {
+        if (bola.contador == qtdBloco) {
             alert('Você Venceu!!!')
             loadInicial()
         } else if (bola.y > cnv.height) {
             alert('Você Perdeu!!!')
             loadInicial()
-        } else {
+        } else if(saindo){
+            alert('Saindo!!!')
+            saindo = false
+            loadInicial()
+        }else{
             atualizar()
             render()
+            if (!pause) {
+            
             requestAnimationFrame(loop)
+            }
         }
     }
     function loadMove() {
@@ -127,10 +137,11 @@
     }
     function loadBlocos() {
         var p = info
-        p.width = 50
-        p.height = 50
+        p.width = 75
+        p.height = 75
         var wid = cnv.width / p.width
-        var het = (cnv.height / 3) / p.height
+        var het = 4
+        qtdBloco = wid*het
         for (var i = 0; i < wid; i++) {
             p.x = p.width * i
             for (var j = 0; j < het; j++) {
@@ -139,16 +150,15 @@
                 let char = new Blocos(p)
                 blocos.push(char)
             }
-
-
+            //alert(qtdBloco)
         }
     }
     function loadBola() {
         let p = info
         p.width = 20
         p.height = 20
-        p.y = 250
-        p.x = 300
+        p.y = 550
+        p.x = 450
         p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
         let char = new Bola(p, dificuldade)
         bola = char
@@ -177,10 +187,7 @@
         loadBola()
     }
     function comecar(){
-        document.getElementById('menuGame').className = 'comeco_Game'
-        document.getElementById('opsMenu').className = 'comeco_Game'
-        //removeEventListener('click', opcoes)
-        
+        document.getElementById('menuGame').className = 'comeco_Game'        
     }
     function inicio() {
         comecar()
@@ -188,11 +195,19 @@
         loop()
     }
     function opcoes() {
+        pause =true
         menu.Game.style.display = 'none'
         menu.opsMenu.style.display = 'block'
 
         menu.Opsoes.Volta.addEventListener('click', function () {
-            menu.Game.style.display = 'block'
+            
+            if(menu.Game.className == 'comeco_Game'){
+                menu.Game.style.display = 'flex'
+                pause =false
+                loop()
+            }else{
+                menu.Game.style.display = 'block'
+            }
             menu.opsMenu.style.display = 'none'
         })
         menu.Opsoes.Facil.addEventListener('click', function (){
@@ -205,12 +220,15 @@
             dificuldade = 2
         })
     }
+    function sair(){
+        saindo = true
+        loadInicial()
+    }
     function menuGame() {
         menu.Iniciar.addEventListener('click', inicio)
         menu.Opsoes.addEventListener('click', opcoes)
-
+        menu.Sair.addEventListener('click', sair)
     }
-
     function loadInicial() {
         /// canvas e ctx 
         cnv = document.querySelector('canvas')
@@ -220,7 +238,7 @@
         //////////////////////////
 
         //menu
-        menu.Game = document.getElementById('menuGame')
+        menu.Game = document.getElementById('menuGame').className = '0'
         //alert(menu.Game) // [object HTMLMenuElement]
         let textIdMenu = 'menuGame_'
         menu.Iniciar = document.getElementById(textIdMenu + 'Iniciar')

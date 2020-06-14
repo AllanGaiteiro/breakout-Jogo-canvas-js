@@ -133,14 +133,17 @@ function colidBlock(bola, blocos) {
                 /// texte dano
                 if (colidX > colidY) {
                     a.dy *= -1
-        
+
                 } else {
                     a.dx *= -1
                 }
-
                 b.visibleCount++
                 b.visible = b.visibleCount == 2 ? false : true
-                a.count()
+                if (b.visibleCount == 2) {
+                    a.count()
+                }
+
+
 
             }
         }
