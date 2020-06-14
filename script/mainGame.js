@@ -30,14 +30,20 @@
     var cnv
     var ctx
     var menu = []
+    var saindo = false
+    var pause = false
     var dificuldade = 1
+    var venceu = false
     //var characteres = []
     var blocos = []
+    var contagemBlocos
+    var qtdBloco
     var player
     var bola
-    var qtdBloco
-    var saindo
-    var pause = false
+
+    ////
+    //var cor = ['chartreuse','blue','yellow','red','black']
+
     var info = { x: 0, y: 0, width: 0, height: 0, color: ' ' }
     var //w = 87,
         //s = 83,
@@ -49,7 +55,7 @@
         dir = 39
     ////////////// fim do loop //////////////////////
     function atualizar() {
-        player.move(cnv)
+        player.move(cnv,dificuldade)
         bola.movebola(cnv)
         colide(player, bola, blocos)
     }
@@ -62,7 +68,8 @@
             value = `SCORE: ${bola.contador}`
         }
         ctx.fillStyle = 'blue'
-        ctx.fillText(`${value}`, cnv.width - 200, 700)
+        ctx.fillText(`vel/player: ${player.movSpeed}, nivel: ${dificuldade}, ${value}`,20, 850)
+        ctx.fillText(`vel/bola: ${Math.abs(bola.dx)}, faltan: ${contagemBlocos} blocos`,20, 875)
     }
     function render() {
         ctx.save()
@@ -75,28 +82,42 @@
             blocos[i].draw(ctx)
         }
         ctx.restore()
+
         score()
     }
     ////////////// fim do loop //////////////////////
 
     ////////////// Carregamento Jogo ////////////////////
     function loop() {
-        if (bola.contador == qtdBloco) {
+        contagemBlocos = blocos.length
+        for (let i = 0; i < blocos.length; i++) {
+            let b = blocos[i]
+            if (b.visible == false ) {
+                contagemBlocos--
+            }
+            if(contagemBlocos == 0){
+                venceu = true
+            }
+            
+        }
+        
+        if (venceu) {
             alert('Você Venceu!!!')
             loadInicial()
         } else if (bola.y > cnv.height) {
             alert('Você Perdeu!!!')
-            loadInicial()
-        } else if(saindo){
+            sair()
+        } else if (saindo) {
             alert('Saindo!!!')
             saindo = false
             loadInicial()
-        }else{
+        } else {
             atualizar()
             render()
             if (!pause) {
-            
-            requestAnimationFrame(loop)
+                requestAnimationFrame(loop)
+            }else{
+                //opcoes()
             }
         }
     }
@@ -141,12 +162,14 @@
         p.height = 75
         var wid = cnv.width / p.width
         var het = 4
-        qtdBloco = wid*het
+        qtdBloco = wid * het
         for (var i = 0; i < wid; i++) {
             p.x = p.width * i
             for (var j = 0; j < het; j++) {
                 p.y = p.height * j
-                p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
+                p.visible = true
+                p.life = 1 + corAleatoria()
+                p.color = 'chartreuse'
                 let char = new Blocos(p)
                 blocos.push(char)
             }
@@ -166,7 +189,7 @@
     function loadPlayer() {
         let p = info
         p.x = 400 - 75
-        p.y = 700 - 75
+        p.y = 850 - 75
         p.width = 150
         p.height = 50
         p.color = 'blue'
@@ -175,7 +198,13 @@
         player = char
     }
     function corAleatoria() {
-        return Math.round(Math.random() * 255)
+        if (dificuldade == 1.4) {
+            return Math.round(Math.random() * 4)
+        } else if (dificuldade == 1.2) {
+            return Math.round(Math.random() * 3)
+        } else {
+            return Math.round(Math.random() * 2)
+        }
     }
     ////////////// Fima Carregamento Jogo ////////////////////
     function loadGame() {
@@ -186,42 +215,60 @@
         loadBlocos()
         loadBola()
     }
-    function comecar(){
-        document.getElementById('menuGame').className = 'comeco_Game'        
+    function comecar() {
+        menu.Game.className = 'menuGame'
+        pause = false
     }
     function inicio() {
+
         comecar()
         loadGame()
         loop()
     }
     function opcoes() {
-        pause =true
-        menu.Game.style.display = 'none'
+        pause = true
+        var visible
+        var invisible
+        if (menu.Game.className == 'menuInicial') {
+            visible = 'block'
+            invisible = 'none'
+        }else if (menu.Game.className == 'menuGame'){
+            visible = 'flex'
+            invisible = 'none'
+        }else{
+            alert('erro')
+        }
+        
+        menu.Game.style.display = invisible
         menu.opsMenu.style.display = 'block'
-
         menu.Opsoes.Volta.addEventListener('click', function () {
+
             
-            if(menu.Game.className == 'comeco_Game'){
-                menu.Game.style.display = 'flex'
-                pause =false
+            pause = false
+            menu.Game.style.display = visible
+            menu.opsMenu.style.display = invisible
+        if (menu.Game.className == 'menuGame') {
                 loop()
-            }else{
-                menu.Game.style.display = 'block'
             }
-            menu.opsMenu.style.display = 'none'
         })
-        menu.Opsoes.Facil.addEventListener('click', function (){
+        menu.Opsoes.Facil.addEventListener('click', function () {
             dificuldade = 1
+            //alert(dificuldade)
         })
-        menu.Opsoes.Medio.addEventListener('click', function (){
-            dificuldade = 1.5
+        menu.Opsoes.Medio.addEventListener('click', function () {
+            dificuldade = 1.2
+            //alert(dificuldade)
         })
-        menu.Opsoes.Dificil.addEventListener('click', function ( ){
-            dificuldade = 2
+        menu.Opsoes.Dificil.addEventListener('click', function () {
+            dificuldade = 1.4
+            //alert(dificuldade)
         })
     }
-    function sair(){
-        saindo = true
+    function sair() {
+        //saindo = true
+        menu.Game.className = 'menuInicial'
+        menu.Game.style.display = 'block'
+        pause = true
         loadInicial()
     }
     function menuGame() {
@@ -234,22 +281,20 @@
         cnv = document.querySelector('canvas')
         ctx = cnv.getContext('2d')
         cnv.width = 900
-        cnv.height = 750
+        cnv.height = 900
         //////////////////////////
 
         //menu
-        menu.Game = document.getElementById('menuGame').className = '0'
+        menu.Game = document.querySelector('.menuInicial')
         //alert(menu.Game) // [object HTMLMenuElement]
-        let textIdMenu = 'menuGame_'
-        menu.Iniciar = document.getElementById(textIdMenu + 'Iniciar')
-        menu.Opsoes = document.getElementById(textIdMenu + 'Opsoe')
-        menu.Sair = document.getElementById(textIdMenu + 'Sair')
+        menu.Iniciar = document.querySelector('#iniciar')
+        menu.Opsoes = document.querySelector('#opcoe')
+        menu.Sair = document.querySelector('#sair')
 
         /////////////////////////
 
         //opsMenu
-        menu.opsMenu = document.getElementById('opsMenu')
-        menu.opsMenu.style.display = 'none'
+        menu.opsMenu = document.querySelector('.ops')
         let opsDifMenuId = 'opsDif_'
         menu.Opsoes.Volta = document.getElementById(opsDifMenuId + 'Volta')
         menu.Opsoes.Facil = document.getElementById(opsDifMenuId + 'Facil')

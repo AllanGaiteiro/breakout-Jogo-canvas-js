@@ -8,16 +8,21 @@ var Characteres = function (c) {
 }
 Characteres.prototype.draw = function (ctx) {
     //alert(c.color)
-    if (this.visible && !this.bola) {
+
+    if ((this.player || this.blok) && this.visible) {
+        ctx.strokeStyle = 'black'
+        ctx.strokeRect(this.x, this.y, this.width, this.height)
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
-    }else if(this.bola){
+        
+    } else if (this.bola) {
         //alert(img)
         ctx.beginPath()
         ctx.fillStyle = this.color
-        ctx.arc(this.x,this.y,this.width,0,2*Math.PI,true)
+        ctx.arc(this.x, this.y, this.width, 0, 2 * Math.PI, true)
         ctx.fill()
         ctx.stroke()
+
     }
 
 }
@@ -37,14 +42,15 @@ Characteres.prototype.centerY = function () {
 var Player = function (c) {
     Characteres.call(this, c)
     this.visible = true
+    this.player = true
     this.movCim = this.movBax = this.movDir = this.movEsq = false
 }
 Player.prototype = Object.create(Characteres.prototype)
 
-Player.prototype.move = function (cnv) {
+Player.prototype.move = function (cnv,d) {
 
-    this.movSpeed = 5
-    this.movement
+    this.movSpeed = 10*d
+    ///this.movement 
     ////mover-se
     if (this.movCim) {
         this.y += this.movSpeed * -1
@@ -66,10 +72,37 @@ Player.prototype.move = function (cnv) {
 // blocos 
 var Blocos = function (c) {
     Characteres.call(this, c)
-    this.visibleCount = 0
+    this.blok = true
     this.visible = true
+    this.life = c.life
+    this.lifeBlock()
+
 }
 Blocos.prototype = Object.create(Characteres.prototype)
+
+Blocos.prototype.lifeBlock = function () {
+    switch (this.life) {
+        case 5:
+            this.color = 'black'
+            break;
+        case 4:
+            this.color = 'red'
+            break;
+        case 3:
+            this.color = 'yellow'
+            break;
+        case 2:
+            this.color = 'blue'
+            break;
+        case 1:
+            this.color = 'chartreuse'
+            break;
+        case 0:
+            this.visible = false
+            break;
+    }
+
+}
 
 // bola
 var Bola = function (c, d) {

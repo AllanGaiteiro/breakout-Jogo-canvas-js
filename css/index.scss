@@ -1,55 +1,66 @@
 :root {
-    --widthCont: 900px;
-    --widthCnv : 800px;
+    --widthCont: 940px;
+    --widthCnv : 900px;
     --widthMenu: 400px;
     --absol    : absolute;
 }
-
-
 .container {
     position: relative;
     margin  : auto;
     width   : var(--widthCont);
-
     header {
         text-align: center;
     }
-
     main {
         menu {
             position        : var(--absol);
-            top             : 200px;
+            top             : 300px;
             left            : calc(calc(var(--widthCont) - var(--widthMenu))/2);
             margin          : auto;
+            text-align: center;
             width           : 400px;
-            background-color: rgba(95, 87, 87, 0.233);
+            background-color: rgba(0, 0, 255, 0.671);
             padding         : 0px;
             padding-bottom  : 50px;
             border-radius   : 5px;
-
             h2 {
                 text-align: center;
                 font-size : 4rem;
             }
-
             button {
-                width    : 240px;
-                height   : 80px;
-                margin   : auto;
-                display  : block;
-                font-size: 2rem;
+                width     : 240px;
+                height    : 80px;
+                margin    : auto;
+                font-size : 2rem;
+                border    : none;
+                border-radius: 5px;
+                background-color: rgb(28, 28, 179);
+                transition: all 0.5s;
+            }
+            button:hover{
+                background-color: rgb(8, 8, 235);
+            }
+            #opsDif_Facil:hover {
+                background-color: chartreuse;
+            }
+
+            #opsDif_Medio:hover {
+                background-color: yellow;
+            }
+
+            #opsDif_Dificil:hover {
+                background-color: red;
             }
         }
-
-        .comeco_Game {
+        .menuGame {
             position      : relative;
-            width         : 900px;
+            width         : 940px;
             height        : 100px;
             vertical-align: middle;
-            margin        : 0px;
+            margin        : 40px;
             padding       : 0px;
-            margin-left   : -250px;
-            margin-bottom : 200px;
+            margin-left   : -270px;
+            margin-bottom : 300px;
             display       : flex;
 
             h2 {
@@ -59,14 +70,10 @@
             button {
                 margin: auto;
             }
-
-            /*menu.Iniciar.style.width = '100px'
-        menu.Iniciar.style.height = '40px'*/
-
-
         }
 
-        .opsMenu {
+        .ops{
+            display: none;
             #voltar {
                 display: flex;
 
@@ -83,47 +90,26 @@
                     font-size   : 1.5rem;
                 }
             }
-
             h3 {
                 text-align: center;
                 font-size : 2rem;
             }
-
-            button {
-                border    : none;
-                transition: all 0.5s;
-            }
-
-            #opsDif_Facil:hover {
-                background-color: chartreuse;
-            }
-
-            #opsDif_Medio:hover {
-                background-color: yellow;
-            }
-
-            #opsDif_Dificil:hover {
-                background-color: red;
-            }
-
         }
         
-
         canvas {
-            width: 900px;
-            height: 750px;
-            background-color: rgba(104, 101, 101, 0.774);
+            margin: auto;
+            width           : var(widthCnv);
+            height          : 900px;
+            border: 20px blue;
+            border-style: ridge;
+            background-color: rgba(109, 116, 214, 0.774);
         }
     }
-    footer{
+    footer {
         text-align: center;
-        
-        p{
-            font-size:1.5rem;
+
+        p {
+            font-size: 1.5rem;
         }
     }
-
-
-
-
 }

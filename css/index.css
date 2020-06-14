@@ -1,6 +1,6 @@
 :root {
-  --widthCont: 900px;
-  --widthCnv: 800px;
+  --widthCont: 940px;
+  --widthCnv: 900px;
   --widthMenu: 400px;
   --absol: absolute;
 }
@@ -17,11 +17,12 @@
 
 .container main menu {
   position: var(--absol);
-  top: 200px;
+  top: 300px;
   left: calc(calc(var(--widthCont) - var(--widthMenu))/2);
   margin: auto;
+  text-align: center;
   width: 400px;
-  background-color: rgba(95, 87, 87, 0.233);
+  background-color: rgba(0, 0, 255, 0.671);
   padding: 0px;
   padding-bottom: 50px;
   border-radius: 5px;
@@ -36,46 +37,68 @@
   width: 240px;
   height: 80px;
   margin: auto;
-  display: block;
   font-size: 2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1c1cb3;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
-.container main .comeco_Game {
+.container main menu button:hover {
+  background-color: #0808eb;
+}
+
+.container main menu #opsDif_Facil:hover {
+  background-color: chartreuse;
+}
+
+.container main menu #opsDif_Medio:hover {
+  background-color: yellow;
+}
+
+.container main menu #opsDif_Dificil:hover {
+  background-color: red;
+}
+
+.container main .menuGame {
   position: relative;
-  width: 900px;
+  width: 940px;
   height: 100px;
   vertical-align: middle;
-  margin: 0px;
+  margin: 40px;
   padding: 0px;
-  margin-left: -250px;
-  margin-bottom: 200px;
+  margin-left: -270px;
+  margin-bottom: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  /*menu.Iniciar.style.width = '100px'
-        menu.Iniciar.style.height = '40px'*/
 }
 
-.container main .comeco_Game h2 {
+.container main .menuGame h2 {
   display: none;
 }
 
-.container main .comeco_Game button {
+.container main .menuGame button {
   margin: auto;
 }
 
-.container main .opsMenu #voltar {
+.container main .ops {
+  display: none;
+}
+
+.container main .ops #voltar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.container main .opsMenu #voltar h2 {
+.container main .ops #voltar h2 {
   margin: 10px;
   font-size: 2rem;
 }
 
-.container main .opsMenu #voltar #opsDif_Volta {
+.container main .ops #voltar #opsDif_Volta {
   margin-left: 10px;
   margin-right: 0px;
   width: 120px;
@@ -83,33 +106,18 @@
   font-size: 1.5rem;
 }
 
-.container main .opsMenu h3 {
+.container main .ops h3 {
   text-align: center;
   font-size: 2rem;
 }
 
-.container main .opsMenu button {
-  border: none;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.container main .opsMenu #opsDif_Facil:hover {
-  background-color: chartreuse;
-}
-
-.container main .opsMenu #opsDif_Medio:hover {
-  background-color: yellow;
-}
-
-.container main .opsMenu #opsDif_Dificil:hover {
-  background-color: red;
-}
-
 .container main canvas {
-  width: 900px;
-  height: 750px;
-  background-color: rgba(104, 101, 101, 0.774);
+  margin: auto;
+  width: var(widthCnv);
+  height: 900px;
+  border: 20px blue;
+  border-style: ridge;
+  background-color: rgba(109, 116, 214, 0.774);
 }
 
 .container footer {
