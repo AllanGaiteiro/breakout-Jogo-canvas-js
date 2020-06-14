@@ -61,15 +61,26 @@
     }
     function score() {
         //alert(this.contador)
-        ctx.font = "2rem serif"
         if (bola.contador < 10) {
-            value = `SCORE: 0${bola.contador}`
+            value = `0${bola.contador}`
         } else {
-            value = `SCORE: ${bola.contador}`
+            value = `${bola.contador}`
         }
-        ctx.fillStyle = 'blue'
-        ctx.fillText(`vel/player: ${player.movSpeed}, nivel: ${dificuldade}, ${value}`,20, 850)
-        ctx.fillText(`vel/bola: ${Math.abs(bola.dx)}, faltan: ${contagemBlocos} blocos`,20, 875)
+        ctx2.clearRect(0, 0, cnv2.width, cnv2.height)
+        ctx2.fillStyle = 'black'
+        ctx2.font = "5rem serif"
+        ctx2.fillText(`SCORE:`,cnv2.width/2-150, 70)
+        ctx2.font = "8rem serif"
+        ctx2.fillText(value,cnv2.width/2-70, 200)
+        ctx2.font = "4rem serif"
+        ctx2.fillText(`nivel: ${dificuldade}`,10, 300)
+        ctx2.fillText(`Faltam:`,cnv2.width/2-100, 500)
+        ctx2.font = "6rem serif"
+        ctx2.fillText(`${contagemBlocos}`,cnv2.width/2-50, 600)
+        ctx2.font = "3rem serif"
+        ctx2.fillText(`vel/player: ${player.movSpeed}`,10, 710)
+        ctx2.fillText(`vel/bola: ${Math.abs(bola.dx)}`,10, 810)
+
     }
     function render() {
         ctx.save()
@@ -109,7 +120,7 @@
             sair()
         } else if (saindo) {
             alert('Saindo!!!')
-            saindo = false
+            saindo = true
             loadInicial()
         } else {
             atualizar()
@@ -268,6 +279,7 @@
         //saindo = true
         menu.Game.className = 'menuInicial'
         menu.Game.style.display = 'block'
+        ctx.clearRect(0,0,cnv.width,cnv.height)
         pause = true
         loadInicial()
     }
@@ -278,10 +290,14 @@
     }
     function loadInicial() {
         /// canvas e ctx 
-        cnv = document.querySelector('canvas')
+        cnv = document.querySelector('.canvasJogo')
+        cnv2 = document.querySelector('.canvasScore')
         ctx = cnv.getContext('2d')
+        ctx2 = cnv2.getContext('2d')
         cnv.width = 900
         cnv.height = 900
+        cnv2.width = 400
+        cnv2.height = 900
         //////////////////////////
 
         //menu

@@ -13,6 +13,13 @@
 
 .container header {
   text-align: center;
+  margin-bottom: 150px;
+}
+
+.container main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .container main menu {
@@ -62,7 +69,8 @@
 }
 
 .container main .menuGame {
-  position: relative;
+  top: 50px;
+  left: 270px;
   width: 940px;
   height: 100px;
   vertical-align: middle;
@@ -111,9 +119,17 @@
   font-size: 2rem;
 }
 
-.container main canvas {
+.container main .canvasJogo {
   margin: auto;
   width: var(widthCnv);
+  height: 900px;
+  border: 20px blue;
+  border-style: ridge;
+  background-color: rgba(109, 116, 214, 0.774);
+}
+
+.container main aside .canvasScore {
+  width: 400px;
   height: 900px;
   border: 20px blue;
   border-style: ridge;
