@@ -92,10 +92,10 @@ Blocos.prototype.lifeBlock = function () {
             this.color = 'yellow'
             break;
         case 2:
-            this.color = 'blue'
+            this.color = 'chartreuse'
             break;
         case 1:
-            this.color = 'chartreuse'
+            this.color = 'blue'
             break;
         case 0:
             this.visible = false

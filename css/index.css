@@ -1,6 +1,6 @@
 :root {
-  --widthCont: 940px;
-  --widthCnv: 900px;
+  --widthCont: 1366px;
+  --widthCnv: 800px;
   --widthMenu: 400px;
   --absol: absolute;
 }
@@ -24,8 +24,8 @@
 
 .container main menu {
   position: var(--absol);
-  top: 300px;
-  left: calc(calc(var(--widthCont) - var(--widthMenu))/2);
+  top: 225px;
+  left: calc(calc(var(--widthCont)/2) - 200px);
   margin: auto;
   text-align: center;
   width: 400px;
@@ -44,7 +44,7 @@
   width: 240px;
   height: 80px;
   margin: auto;
-  font-size: 2rem;
+  font-size: 3rem;
   border: none;
   border-radius: 5px;
   background-color: #1c1cb3;
@@ -70,8 +70,8 @@
 
 .container main .menuGame {
   top: 50px;
-  left: 270px;
-  width: 940px;
+  left: 530px;
+  width: 840px;
   height: 100px;
   vertical-align: middle;
   margin: 40px;
@@ -121,18 +121,24 @@
 
 .container main .canvasJogo {
   margin: auto;
-  width: var(widthCnv);
-  height: 900px;
+  width: 800px;
+  height: 500px;
   border: 20px blue;
   border-style: ridge;
   background-color: rgba(109, 116, 214, 0.774);
 }
 
-.container main aside .canvasScore {
-  width: 400px;
-  height: 900px;
-  border: 20px blue;
-  border-style: ridge;
+.container main aside {
+  width: 200px;
+  height: 500px;
+  border: 20px ridge blue;
+  background-color: rgba(109, 116, 214, 0.774);
+}
+
+.container main #painel {
+  width: 200px;
+  height: 500px;
+  border: 20px ridge blue;
   background-color: rgba(109, 116, 214, 0.774);
 }
 

@@ -68,18 +68,20 @@
         }
         ctx2.clearRect(0, 0, cnv2.width, cnv2.height)
         ctx2.fillStyle = 'black'
-        ctx2.font = "5rem serif"
-        ctx2.fillText(`SCORE:`,cnv2.width/2-150, 70)
-        ctx2.font = "8rem serif"
-        ctx2.fillText(value,cnv2.width/2-70, 200)
-        ctx2.font = "4rem serif"
-        ctx2.fillText(`nivel: ${dificuldade}`,10, 300)
-        ctx2.fillText(`Faltam:`,cnv2.width/2-100, 500)
-        ctx2.font = "6rem serif"
-        ctx2.fillText(`${contagemBlocos}`,cnv2.width/2-50, 600)
-        ctx2.font = "3rem serif"
-        ctx2.fillText(`vel/player: ${player.movSpeed}`,10, 710)
-        ctx2.fillText(`vel/bola: ${Math.abs(bola.dx)}`,10, 810)
+        ctx2.font = "2rem serif"
+        ctx2.fillText(`SCORE:`,cnv2.width/2-60, 30)
+        ctx2.font = "bold 4rem serif"
+        ctx2.fillText(value,cnv2.width/2-40, 100)
+        ctx2.font = "2rem serif"
+        ctx2.fillText(`nivel: ${dificuldade}`,10, 140)
+        ctx2.fillText(`Faltam:`,cnv2.width/2-60, 250)
+        ctx2.font = "bold  3rem serif"
+        ctx2.fillText(`${contagemBlocos}`,cnv2.width/2-30, 300)
+        ctx2.font = "2rem serif"
+        ctx2.fillText(`vel/player:`,10, 340)
+        ctx2.fillText(`${player.movSpeed}`,60, 380)
+        ctx2.fillText(`vel/bola`,20, 420)
+        ctx2.fillText(`${Math.abs(bola.dx)}`,50, 470)
 
     }
     function render() {
@@ -169,8 +171,8 @@
     }
     function loadBlocos() {
         var p = info
-        p.width = 75
-        p.height = 75
+        p.width = cnv.width/10
+        p.height = 40
         var wid = cnv.width / p.width
         var het = 4
         qtdBloco = wid * het
@@ -191,18 +193,18 @@
         let p = info
         p.width = 20
         p.height = 20
-        p.y = 550
-        p.x = 450
+        p.y = cnv.height - 150
+        p.x = cnv.width / 2
         p.color = `rgb(${corAleatoria()},${corAleatoria()},${corAleatoria()})`
         let char = new Bola(p, dificuldade)
         bola = char
     }
     function loadPlayer() {
         let p = info
-        p.x = 400 - 75
-        p.y = 850 - 75
+        p.x = cnv.width - 50
+        p.y = cnv.height - 50
         p.width = 150
-        p.height = 50
+        p.height = 30
         p.color = 'blue'
         let char = new Player(info)
         //characteres.push(char)
@@ -280,6 +282,7 @@
         menu.Game.className = 'menuInicial'
         menu.Game.style.display = 'block'
         ctx.clearRect(0,0,cnv.width,cnv.height)
+        ctx2.clearRect(0,0,cnv2.width,cnv2.height)
         pause = true
         loadInicial()
     }
@@ -291,15 +294,15 @@
     function loadInicial() {
         /// canvas e ctx 
         cnv = document.querySelector('.canvasJogo')
-        cnv2 = document.querySelector('.canvasScore')
+        cnv2 = document.querySelector('#painel')
         ctx = cnv.getContext('2d')
         ctx2 = cnv2.getContext('2d')
-        cnv.width = 900
-        cnv.height = 900
-        cnv2.width = 400
-        cnv2.height = 900
+        cnv.width = 800
+        cnv.height = 500
+        cnv2.width = 200
+        cnv2.height = 500
         //////////////////////////
-
+        
         //menu
         menu.Game = document.querySelector('.menuInicial')
         //alert(menu.Game) // [object HTMLMenuElement]

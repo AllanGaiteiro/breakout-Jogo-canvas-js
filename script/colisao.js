@@ -61,7 +61,7 @@ function colidBlock(bola, blocos) {
                 b.lifeBlock()
 
                 //b.visible = b.life == 0 ? false : true
-                if (b.color == 'chartreuse' && b.visible == false) {
+                if (b.visible == false) {
                     a.count()
                     a.dx *= 1.01
                     a.dy *= 1.01
