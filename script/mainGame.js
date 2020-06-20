@@ -116,10 +116,12 @@
         
         if (venceu) {
             alert('Você Venceu!!!')
-            loadInicial()
+            document.location.reload(true);
+            //loadInicial()
         } else if (bola.y > cnv.height) {
             alert('Você Perdeu!!!')
-            sair()
+            document.location.reload(true);
+            //sair()
         } else if (saindo) {
             alert('Saindo!!!')
             saindo = true
@@ -233,7 +235,10 @@
         pause = false
     }
     function inicio() {
-
+        blocos = []
+    
+        ctx.clearRect(0,0,cnv.width,cnv.height)
+        ctx2.clearRect(0,0,cnv2.width,cnv2.height)
         comecar()
         loadGame()
         loop()
@@ -269,11 +274,11 @@
             //alert(dificuldade)
         })
         menu.Opsoes.Medio.addEventListener('click', function () {
-            dificuldade = 1.2
+            dificuldade = 1.05
             //alert(dificuldade)
         })
         menu.Opsoes.Dificil.addEventListener('click', function () {
-            dificuldade = 1.4
+            dificuldade = 1.1
             //alert(dificuldade)
         })
     }
@@ -284,6 +289,7 @@
         ctx.clearRect(0,0,cnv.width,cnv.height)
         ctx2.clearRect(0,0,cnv2.width,cnv2.height)
         pause = true
+        blocos = []
         loadInicial()
     }
     function menuGame() {
@@ -320,24 +326,7 @@
         menu.Opsoes.Medio = document.getElementById(opsDifMenuId + 'Medio')
         menu.Opsoes.Dificil = document.getElementById(opsDifMenuId + 'Dificil')
 
-        //teste 04: verificaçao do ctx
-
-        //alert(ctx) // tenq ser igual a: [object CanvasRenderingContext2D]
-        /////////////////////////
-
-        //teste 05: verificar renderizaçao do ctx
-
-        //ctx.fillStyle = 'blue'
-        //ctx.fillRect(0,0,cnv.width,cnv.height)
-        /////////////////////
-
-        //teste 06: verificar os cpmponentes menu
-
-        //alert(menu.Opcoes.innerText)
-        //////////////////////
         menuGame()
     }
     window.addEventListener('load', loadInicial)
 }())
-//teste 02: verificar escopo variaveis
-//alert(test) // variaveis fora nao acessam as de dentro
