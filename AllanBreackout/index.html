@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="script/mainGame.js"></script>
+    <script src="script/sprites.js"></script>
+    <script src="script/colisao.js"></script>
+    <title>Trabalho Jogo</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BREAKOUT</h1>
+        </header>
+        <main>
+            <menu class='menuInicial'>
+                <h2>Menu</h2>
+                <button id="iniciar">Iniciar</button>
+                <button  id="opcoe">Opções</button>
+                <button  id="sair">Sair</button>
+            </menu>
+            <menu class="ops">
+                <div id="voltar">                
+                    <button id="opsDif_Volta">Voltar</button>
+
+                    <h2>Opções</h2>
+                </div>
+                
+                <div>
+                    <h3>Dificultade:</h3>
+                    <button id="opsDif_Facil" >Facil</button>
+                    <button  id="opsDif_Medio">Medio</button>
+                    <button id="opsDif_Dificil">Dificil</button>
+                </div>
+                
+            </menu>
+            <aside id="ranking">Aki Tera o Ranking
+            </aside>
+            <canvas class="canvasJogo"></canvas>
+            <canvas id="painel"></canvas >
+            
+        </main>
+        <footer>
+            <p>Criado por Allan Gaiteiro</p>
+        </footer>
+    </div>
+    
+</body>
+</html>

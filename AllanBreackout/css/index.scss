@@ -1,0 +1,132 @@
+:root {
+    --widthCont: 1366px;
+    --widthCnv : 800px;
+    --widthMenu: 400px;
+    --absol    : absolute;
+}
+.container {
+    position: relative;
+    margin  : auto;
+    width   : var(--widthCont);
+    header {
+        text-align: center;
+        margin-bottom: 150px;
+    }
+    main {
+        display: flex;
+        menu {
+            position        : var(--absol);
+            top             : 225px;
+            left            :  calc(calc(var(--widthCont)/2) - 200px);
+            margin          : auto;
+            text-align: center;
+            width           : 400px;
+            background-color: rgba(0, 0, 255, 0.671);
+            padding         : 0px;
+            padding-bottom  : 50px;
+            border-radius   : 5px;
+            h2 {
+                text-align: center;
+                font-size : 4rem;
+            }
+            button {
+                width     : 240px;
+                height    : 80px;
+                margin    : auto;
+                font-size : 3rem;
+                border    : none;
+                border-radius: 5px;
+                background-color: rgb(28, 28, 179);
+                transition: all 0.5s;
+            }
+            button:hover{
+                background-color: rgb(8, 8, 235);
+            }
+            #opsDif_Facil:hover {
+                background-color: chartreuse;
+            }
+
+            #opsDif_Medio:hover {
+                background-color: yellow;
+            }
+
+            #opsDif_Dificil:hover {
+                background-color: red;
+            }
+        }
+        .menuGame {
+            //position      : relative;
+            top:50px;
+            left: 530px;
+            width         : 840px;
+            height        : 100px;
+            vertical-align: middle;
+            margin        : 40px;
+            padding       : 0px;
+            margin-left   : -270px;
+            margin-bottom : 300px;
+            display       : flex;
+
+            h2 {
+                display: none;
+            }
+
+            button {
+                margin: auto;
+            }
+        }
+
+        .ops{
+            display: none;
+            #voltar {
+                display: flex;
+
+                h2 {
+                    margin   : 10px;
+                    font-size: 2rem;
+                }
+
+                #opsDif_Volta {
+                    margin-left : 10px;
+                    margin-right: 0px;
+                    width       : 120px;
+                    height      : 40px;
+                    font-size   : 1.5rem;
+                }
+            }
+            h3 {
+                text-align: center;
+                font-size : 2rem;
+            }
+        }
+        
+        .canvasJogo {
+            margin: auto;
+            width           : 800px;
+            height          : 500px;
+            border: 20px blue;
+            border-style: ridge;
+            background-color: rgba(109, 116, 214, 0.774);
+        }
+        aside{
+            width: 200px;
+            height: 500px;
+            border:20px ridge blue ;
+            background-color: rgba(109, 116, 214, 0.774);
+        }
+        #painel{
+            width: 200px;
+            height: 500px;
+            border:20px ridge blue ;
+            background-color: rgba(109, 116, 214, 0.774);
+        }
+    }
+    
+    footer {
+        text-align: center;
+
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}

@@ -1,0 +1,3 @@
+function playerInfo() {
+    return 'teste'
+}

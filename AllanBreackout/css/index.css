@@ -1,0 +1,152 @@
+:root {
+  --widthCont: 1366px;
+  --widthCnv: 800px;
+  --widthMenu: 400px;
+  --absol: absolute;
+}
+
+.container {
+  position: relative;
+  margin: auto;
+  width: var(--widthCont);
+}
+
+.container header {
+  text-align: center;
+  margin-bottom: 150px;
+}
+
+.container main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container main menu {
+  position: var(--absol);
+  top: 225px;
+  left: calc(calc(var(--widthCont)/2) - 200px);
+  margin: auto;
+  text-align: center;
+  width: 400px;
+  background-color: rgba(0, 0, 255, 0.671);
+  padding: 0px;
+  padding-bottom: 50px;
+  border-radius: 5px;
+}
+
+.container main menu h2 {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.container main menu button {
+  width: 240px;
+  height: 80px;
+  margin: auto;
+  font-size: 3rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #1c1cb3;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.container main menu button:hover {
+  background-color: #0808eb;
+}
+
+.container main menu #opsDif_Facil:hover {
+  background-color: chartreuse;
+}
+
+.container main menu #opsDif_Medio:hover {
+  background-color: yellow;
+}
+
+.container main menu #opsDif_Dificil:hover {
+  background-color: red;
+}
+
+.container main .menuGame {
+  top: 50px;
+  left: 530px;
+  width: 840px;
+  height: 100px;
+  vertical-align: middle;
+  margin: 40px;
+  padding: 0px;
+  margin-left: -270px;
+  margin-bottom: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container main .menuGame h2 {
+  display: none;
+}
+
+.container main .menuGame button {
+  margin: auto;
+}
+
+.container main .ops {
+  display: none;
+}
+
+.container main .ops #voltar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container main .ops #voltar h2 {
+  margin: 10px;
+  font-size: 2rem;
+}
+
+.container main .ops #voltar #opsDif_Volta {
+  margin-left: 10px;
+  margin-right: 0px;
+  width: 120px;
+  height: 40px;
+  font-size: 1.5rem;
+}
+
+.container main .ops h3 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.container main .canvasJogo {
+  margin: auto;
+  width: 800px;
+  height: 500px;
+  border: 20px blue;
+  border-style: ridge;
+  background-color: rgba(109, 116, 214, 0.774);
+}
+
+.container main aside {
+  width: 200px;
+  height: 500px;
+  border: 20px ridge blue;
+  background-color: rgba(109, 116, 214, 0.774);
+}
+
+.container main #painel {
+  width: 200px;
+  height: 500px;
+  border: 20px ridge blue;
+  background-color: rgba(109, 116, 214, 0.774);
+}
+
+.container footer {
+  text-align: center;
+}
+
+.container footer p {
+  font-size: 1.5rem;
+}
+/*# sourceMappingURL=index.css.map */
